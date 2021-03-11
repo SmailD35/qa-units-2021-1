@@ -70,6 +70,7 @@ describe('Order.js', () => {
         />
     );
     expect(shallowToJson(output)).toMatchSnapshot();
+    expect(getDate).toBeCalledTimes(0);
   });
 
   it('order is undefined', () => {
@@ -77,5 +78,6 @@ describe('Order.js', () => {
         <Order/>
     );
     expect(shallowToJson(output)).toMatchSnapshot();
+    expect(getDate).toBeCalledTimes(0);
   });
 });
