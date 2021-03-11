@@ -9,29 +9,14 @@ import Order from './Order';
 import {getDate} from "../utils/getDate";
 Enzyme.configure({ adapter: new Adapter() })
 
-afterEach(() => {
-  jest.clearAllMocks();
-});
 
 describe('Order.js', () => {
-  it('order without items', () => {
-    getDate.mockReturnValue('14 марта, чт, 2019 год');
 
-    const order = {
-      date: 1552585550000,
-      shop: 'Эльдоградо'
-    };
-
-    const output = shallow(
-        <Order
-            order={order}
-        />
-    );
-    expect(shallowToJson(output)).toMatchSnapshot();
-    expect(getDate).toBeCalledTimes(1);
+  afterEach(() => {
+    jest.clearAllMocks();
   });
 
-  it('order with items', () => {
+  it('snapshot test', () => {
     getDate.mockReturnValue('13 марта, ср, 2019 год');
 
     const order = {
@@ -50,7 +35,46 @@ describe('Order.js', () => {
             order={order}
         />
     );
+
     expect(shallowToJson(output)).toMatchSnapshot();
+  })
+
+  it('order without items', () => {
+    getDate.mockReturnValue('14 марта, чт, 2019 год');
+
+    const order = {
+      date: 1552585550000,
+      shop: 'Эльдоградо'
+    };
+
+    shallow(
+        <Order
+            order={order}
+        />
+    );
+
+    expect(getDate).toBeCalledTimes(1);
+  });
+
+  it('order with items', () => {
+    getDate.mockReturnValue('13 марта, ср, 2019 год');
+
+    const order = {
+      date: 1552585550000,
+      shop: 'Lamodник.ru',
+      items: [
+        'Жакет - BOREAL5',
+        'Miss Gabby Костюм',
+        'Ostin перчатки мужские',
+        'Zara худи роз.',
+      ]
+    };
+
+    shallow(
+        <Order
+            order={order}
+        />
+    );
     expect(getDate).toBeCalledTimes(1);
   });
 
@@ -69,7 +93,7 @@ describe('Order.js', () => {
             order={order}
         />
     );
-    expect(shallowToJson(output)).toMatchSnapshot();
+    expect(output).toEqual({});
     expect(getDate).toBeCalledTimes(0);
   });
 
@@ -77,7 +101,7 @@ describe('Order.js', () => {
     const output = shallow(
         <Order/>
     );
-    expect(shallowToJson(output)).toMatchSnapshot();
+    expect(output).toEqual({});
     expect(getDate).toBeCalledTimes(0);
   });
 });

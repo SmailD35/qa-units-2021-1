@@ -1,8 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Order.js order is undefined 1`] = `""`;
-
-exports[`Order.js order with items 1`] = `
+exports[`Order.js snapshot test 1`] = `
 <div
   className="Order"
 >
@@ -48,31 +46,5 @@ exports[`Order.js order with items 1`] = `
       Zara худи роз.
     </div>
   </div>
-</div>
-`;
-
-exports[`Order.js order without date and shop 1`] = `""`;
-
-exports[`Order.js order without items 1`] = `
-<div
-  className="Order"
->
-  <div
-    className="Order-header"
-  >
-    <span
-      className="Order-shop"
-    >
-      Эльдоградо
-    </span>
-    <span
-      id="date"
-    >
-      14 марта, чт, 2019 год
-    </span>
-  </div>
-  <div
-    className="Order-items"
-  />
 </div>
 `;
