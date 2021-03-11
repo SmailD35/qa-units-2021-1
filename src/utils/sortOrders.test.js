@@ -107,7 +107,7 @@ describe('sortByDate function', () => {
 		expect(result).toBe(0);
 	});
 
-	it('first order date is greater then the second ones', () => {
+	it('first orders date is greater then the second ones', () => {
 		const order1 = {
 			date: 1552585550000,
 		};
